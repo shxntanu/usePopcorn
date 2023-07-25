@@ -8,6 +8,7 @@ A simple React app that fetches data from the OMDb movie database and let's user
 - Components as an API
 - State in depth
 - Prop Drilling
+- Local Storage
 
 ## Use it yourself
 Install Git on your device. Then in the terminal run
