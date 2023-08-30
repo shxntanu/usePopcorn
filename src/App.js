@@ -16,8 +16,6 @@ import ErrorMessage from "./utils/ErrorMessage";
 import Numresults from "./utils/Numresults";
 import Main from "./layout/Main";
 
-export const KEY = "c7c3c0f9";
-
 export default function App() {
     const [query, setQuery] = useState("");
     const [selectedID, setSelectedID] = useState(null);

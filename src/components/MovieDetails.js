@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useKey } from "../hooks/useKey";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
-import { KEY } from "../App";
 
 export function MovieDetails({
     selectedID,
@@ -63,7 +62,7 @@ export function MovieDetails({
             async function getMovieDetails() {
                 setIsLoading(true);
                 const res = await fetch(
-                    `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedID}`
+                    `http://www.omdbapi.com/?apikey=${process.env.KEY}&i=${selectedID}`
                 );
                 const data = await res.json();
                 setMovie(data);
