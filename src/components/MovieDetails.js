@@ -22,33 +22,32 @@ export default function MovieDetails({
         [userRating]
     );
 
-    const isWatched = watched.map((movie) => movie.imdbID).includes(selectedID);
+    const isWatched = watched.map((movie) => movie.ID).includes(selectedID);
     const watchedUserRating = watched.find(
-        (movie) => movie.imdbID === selectedID
+        (movie) => movie.ID === selectedID
     )?.userRating;
 
     const {
         Title: title,
-        Year: year,
-        Poster: poster,
-        Runtime: runtime,
-        imdbRating,
+        ID: id,
+        Poster: poster_path,
+        Rating: vote_average,
         Plot: plot,
-        Release: released,
+        Release: release_date,
         Actors: actors,
         Director: director,
-        Genre: genre,
+        Overview: overview
     } = movie;
 
     function handleAdd(newMovie) {
         const newWatchedMovie = {
-            imdbID: selectedID,
-            title,
-            year,
-            poster,
-            imdbRating: Number(imdbRating),
-            runtime: Number(runtime.split(" ").at(0)),
+            ID: selectedID,
+            Title: title,
+            Release: release_date,
+            Poster: `https://image.tmdb.org/t/p/w500${poster_path}`,
+            Rating: Number(vote_average),
             userRating,
+            Overview: overview,
             countRatingDecisions: countRef.current,
         };
         onAddWatched(newWatchedMovie);
@@ -62,7 +61,7 @@ export default function MovieDetails({
             async function getMovieDetails() {
                 setIsLoading(true);
                 const res = await fetch(
-                    `http://www.omdbapi.com/?apikey=${process.env.KEY}&i=${selectedID}`
+                    `https://api.themoviedb.org/3/search/movie?query=${selectedID}&api_key=${process.env.API_KEY}`
                 );
                 const data = await res.json();
                 setMovie(data);
@@ -95,16 +94,15 @@ export default function MovieDetails({
                         <button className="btn-back" onClick={onCloseMovie}>
                             &larr;
                         </button>
-                        <img src={poster} alt={`Poster of ${movie}`} />
+                        <img src={poster_path} alt={`Poster of ${movie}`} />
                         <div className="details-overview">
                             <h2>{title}</h2>
                             <p>
-                                {released} &bull; {runtime}
+                                {release_date}
                             </p>
-                            <p>{genre}</p>
                             <p>
                                 <span>⭐️</span>
-                                {imdbRating} IMDb Rating
+                                {vote_average} Average Rating
                             </p>
                         </div>
                     </header>
