@@ -1,22 +1,22 @@
 import { useState } from "react";
 
-import { useMovies } from "./hooks/useMovies";
-import { useLocalStorageState } from "./hooks/useLocalStorageState";
+import { useMovies } from "../hooks/useMovies";
+import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
-import NavBar from "./components/NavBar";
-import Search from "./components/Search";
-import Loader from "./components/Loader";
-import MovieList from "./components/MovieList";
-import MovieDetails from "./components/MovieDetails";
-import WatchedSummary from "./components/WatchedSummary";
-import Box from "./components/Box";
-import WatchedMovieList from "./components/WatchedMovieList";
+import NavBar from "../components/NavBar";
+import Search from "../components/Search";
+import Loader from "../components/Loader";
+import MovieList from "../components/MovieList";
+import MovieDetails from "../components/MovieDetails";
+import WatchedSummary from "../components/WatchedSummary";
+import Box from "../components/Box";
+import WatchedMovieList from "../components/WatchedMovieList";
 
-import ErrorMessage from "./utils/ErrorMessage";
-import Numresults from "./utils/Numresults";
-import Main from "./layout/Main";
+import ErrorMessage from "../utils/ErrorMessage";
+import Numresults from "../utils/Numresults";
+import Main from "../layout/Main";
 
-export default function App() {
+export default function Home() {
     const [query, setQuery] = useState("");
     const [selectedID, setSelectedID] = useState(null);
     const { movies, isLoading, error } = useMovies(query);
