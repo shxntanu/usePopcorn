@@ -1,7 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
-import App from "./App";
+
+import Home from "./pages/Home";
+import Movie from "./pages/Movie";
+
+export default function App() {
+    return (
+        <div>
+            <Router>
+                <Routes>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/movie/:movieName" element={<Movie />} />
+                </Routes>
+            </Router>
+        </div>
+    );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
