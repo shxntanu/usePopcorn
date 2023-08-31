@@ -1,6 +1,6 @@
-import Movie from "./components/Movie";
+import Movie from "./Movie";
 
-export function MovieList({ movies, onSelectMovie }) {
+export default function MovieList({ movies, onSelectMovie }) {
     return (
         <ul className="list list-movies">
             {movies?.map((movie) => (

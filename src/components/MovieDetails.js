@@ -3,7 +3,7 @@ import { useKey } from "../hooks/useKey";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 
-export function MovieDetails({
+export default function MovieDetails({
     selectedID,
     onCloseMovie,
     onAddWatched,
