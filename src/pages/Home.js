@@ -44,7 +44,7 @@ export default function Home() {
         <>
             <NavBar>
                 <Search query={query} setQuery={setQuery} />
-                <Numresults movies={movies} />
+                <Numresults movies={movies.results} />
             </NavBar>
             <Main>
                 <Box>
