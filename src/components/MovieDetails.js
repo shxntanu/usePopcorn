@@ -28,15 +28,15 @@ export default function MovieDetails({
     )?.userRating;
 
     const {
-        Title: title,
-        ID: id,
-        Poster: poster_path,
-        Rating: vote_average,
-        Plot: plot,
-        Release: release_date,
-        Actors: actors,
-        Director: director,
-        Overview: overview
+        title,
+        id,
+        poster_path,
+        vote_average,
+        plot,
+        release_date,
+        actors,
+        director,
+        overview
     } = movie;
 
     function handleAdd(newMovie) {
