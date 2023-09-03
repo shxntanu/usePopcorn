@@ -33,7 +33,7 @@ export function useMovies(query) {
                     if (data.results === [])
                         throw new Error("Movie not Found");
 
-                    setMovies(data.Search);
+                    setMovies(data);
                     setError("");
                 } catch (err) {
                     // console.error(err.message);

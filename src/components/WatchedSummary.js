@@ -1,5 +1,5 @@
 export default function WatchedSummary({ watched }) {
-    const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
+    const avgRating = average(watched.map((movie) => movie.vote_average));
     const avgUserRating = average(watched.map((movie) => movie.userRating));
     const avgRuntime = average(watched.map((movie) => movie.runtime));
 
@@ -13,7 +13,7 @@ export default function WatchedSummary({ watched }) {
                 </p>
                 <p>
                     <span>⭐️</span>
-                    <span>{avgImdbRating.toFixed(2)}</span>
+                    <span>{avgRating.toFixed(2)}</span>
                 </p>
                 <p>
                     <span>🌟</span>

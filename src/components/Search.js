@@ -16,7 +16,7 @@ export default function Search({ query, setQuery }) {
             type="text"
             placeholder="Search movies..."
             value={query}
-            onChange={async (e) => await setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
             ref={inputEl}
         />
     );
