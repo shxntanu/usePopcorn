@@ -12,7 +12,7 @@ export default function App() {
             <Router>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/movie/:movieName" element={<Movie />} />
+                    <Route path="/movie" element={<Movie />} />
                 </Routes>
             </Router>
         </div>
