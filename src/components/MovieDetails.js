@@ -13,6 +13,8 @@ export default function MovieDetails({
     const [isLoading, setIsLoading] = useState(false);
     const [userRating, setUserRating] = useState("");
 
+    const API_KEY = "d1b83dd054786999cdeab1df570feb46";
+
     const countRef = useRef(0);
 
     useEffect(
@@ -22,9 +24,9 @@ export default function MovieDetails({
         [userRating]
     );
 
-    const isWatched = watched.map((movie) => movie.ID).includes(selectedID);
+    const isWatched = watched.map((movie) => movie.id).includes(selectedID);
     const watchedUserRating = watched.find(
-        (movie) => movie.ID === selectedID
+        (movie) => movie.id === selectedID
     )?.userRating;
 
     const {
@@ -32,22 +34,21 @@ export default function MovieDetails({
         id,
         poster_path,
         vote_average,
-        plot,
         release_date,
-        actors,
-        director,
-        overview
+        overview,
+        runtime,
     } = movie;
 
     function handleAdd(newMovie) {
         const newWatchedMovie = {
-            ID: selectedID,
-            Title: title,
-            Release: release_date,
-            Poster: `https://image.tmdb.org/t/p/w500${poster_path}`,
-            Rating: Number(vote_average),
+            id: selectedID,
+            title,
+            release_date,
+            poster_path,
+            vote_average,
             userRating,
-            Overview: overview,
+            overview,
+            runtime,
             countRatingDecisions: countRef.current,
         };
         onAddWatched(newWatchedMovie);
@@ -61,9 +62,10 @@ export default function MovieDetails({
             async function getMovieDetails() {
                 setIsLoading(true);
                 const res = await fetch(
-                    `https://api.themoviedb.org/3/search/movie?query=${selectedID}&api_key=${process.env.API_KEY}`
+                    `https://api.themoviedb.org/3/movie/${selectedID}?api_key=${API_KEY}`
                 );
                 const data = await res.json();
+                console.log(data);
                 setMovie(data);
                 setIsLoading(false);
             }
@@ -94,12 +96,13 @@ export default function MovieDetails({
                         <button className="btn-back" onClick={onCloseMovie}>
                             &larr;
                         </button>
-                        <img src={poster_path} alt={`Poster of ${movie}`} />
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                            alt={`Poster of ${movie}`}
+                        />
                         <div className="details-overview">
                             <h2>{title}</h2>
-                            <p>
-                                {release_date}
-                            </p>
+                            <p>{release_date}</p>
                             <p>
                                 <span>⭐️</span>
                                 {vote_average} Average Rating
@@ -133,10 +136,10 @@ export default function MovieDetails({
                             )}
                         </div>
                         <p>
-                            <em>{plot}</em>
+                            <em>{overview}</em>
                         </p>
-                        <p>Starring {actors}</p>
-                        <p>Directed by {director}</p>
+                        {/* <p>Starring {actors}</p>
+                        <p>Directed by {director}</p> */}
                     </section>
                 </>
             )}
