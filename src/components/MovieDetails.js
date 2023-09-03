@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useKey } from "../hooks/useKey";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieDetails({
     selectedID,
@@ -12,6 +13,16 @@ export default function MovieDetails({
     const [movie, setMovie] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [userRating, setUserRating] = useState("");
+
+    const navigate = useNavigate();
+
+    const toMoviePage = () => {
+        navigate("/movie", {
+            state: {
+                selectedID: selectedID,
+            },
+        });
+    };
 
     const API_KEY = "d1b83dd054786999cdeab1df570feb46";
 
@@ -138,8 +149,14 @@ export default function MovieDetails({
                         <p>
                             <em>{overview}</em>
                         </p>
-                        {/* <p>Starring {actors}</p>
-                        <p>Directed by {director}</p> */}
+                        <button
+                            className="btn-add"
+                            onClick={() => {
+                                toMoviePage();
+                            }}
+                        >
+                            Watch Movie
+                        </button>
                     </section>
                 </>
             )}
