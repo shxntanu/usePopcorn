@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --color-primary: #6741d9;
   --color-primary-light: #7950f2;
@@ -52,6 +56,15 @@ body {
 .box {
   width: 42rem;
   max-width: 42rem;
+  background-color: var(--color-background-500);
+  border-radius: 0.9rem;
+  overflow: scroll;
+  position: relative;
+}
+
+.movieBox {
+  width: 150rem;
+  max-width: 80%;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   overflow: scroll;
