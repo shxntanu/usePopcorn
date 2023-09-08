@@ -3,9 +3,8 @@ import { useLocation } from "react-router";
 
 import NavBar from "../components/NavBar";
 import Search from "../components/Search";
+import Badge from "../components/Badge";
 import Numresults from "../utils/Numresults";
-import Main from "../layout/Main";
-import MovieBox from "../components/MovieBox";
 
 function Movie() {
     const [query, setQuery] = useState("");
@@ -51,15 +50,32 @@ function Movie() {
                 <Search query={query} setQuery={setQuery} />
                 {/* <Numresults movies={movies} /> */}
             </NavBar>
-            <Main>
-                <MovieBox>
-                    <img
-                    className="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800 mx-auto"
-                        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        alt={`Poster of ${movie}`}
-                    />
-                </MovieBox>
-            </Main>
+            <div className="main">
+                <div className="movieBox">
+                    <div className="flex flex-row items-center mt-20 mx-20">
+                        <img
+                            className="object-fill h-min max-w-xl rounded-lg shadow-xl dark:shadow-gray-800"
+                            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                            alt={`Poster of ${movie}`}
+                        />
+                        <div className="flex flex-col ml-20 space-y-5">
+                            <p className="logo body text-6xl">{title}</p>
+                            <p className="body pr-24">{overview}</p>
+                            <div>
+                            <Badge content="hello"/>
+                            </div>
+                            <div className="flex flex-row space-x-5">
+                                <button className="btn-add w-52">
+                                    &#9658; Watch Now
+                                </button>
+                                <button className="btn-add w-52">
+                                    &#x2b; Add to list
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
