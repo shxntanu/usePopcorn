@@ -155,7 +155,7 @@ export default function MovieDetails({
                                 toMoviePage();
                             }}
                         >
-                            Watch Movie
+                            Details
                         </button>
                     </section>
                 </>
