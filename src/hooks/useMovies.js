@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-const sampleData = require('../constants/sampleData.json')
+const sampleData = require("../constants/sampleData.json");
 
 export function useMovies(query) {
     const API_KEY = "d1b83dd054786999cdeab1df570feb46";
 
     const [movies, setMovies] = useState(sampleData);
+    // const [movie, setMovie] = useState({});
+    // const [similarMovies, setSimilarMovies] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -18,22 +20,33 @@ export function useMovies(query) {
                     setIsLoading(true);
                     setError("");
 
-                    const res = await fetch(
-                        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`,
-                        { signal: controller.signal }
-                    );
+                  
+                        const queryRes = await fetch(
+                            `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`,
+                            { signal: controller.signal }
+                        );
+                        if (query === "") return;
+                        if (!queryRes.ok)
+                            throw new Error("Something went wrong");
+                        const movieQueryData = await queryRes.json();
+                        setMovies(movieQueryData);
+                        console.log(movieQueryData);
+                        if (movieQueryData.results === [])
+                            throw new Error("Movie not Found");
+                    
 
-                    if (query === "") return;
+                    // const similarMoviesRes = await fetch(
+                    //     `https://api.themoviedb.org/3/movie/${selectedID}/recommendations?language=en-US&page=1&api_key=${API_KEY}`
+                    // );
+                    // const similarMoviesData = await similarMoviesRes.json();
 
-                    if (!res.ok) throw new Error("Something went wrong");
+                    // const movieDetailRes = await fetch(
+                    //     `https://api.themoviedb.org/3/movie/${selectedID}?api_key=${API_KEY}`
+                    // );
+                    // const movieDetailData = await movieDetailRes.json();
 
-                    const data = await res.json();
-
-                    console.log(data)
-                    if (data.results === [])
-                        throw new Error("Movie not Found");
-
-                    setMovies(data);
+                    // setSimilarMovies(similarMoviesData);
+                    // setMovie(movieDetailData);
                     setError("");
                 } catch (err) {
                     // console.error(err.message);
@@ -55,5 +68,5 @@ export function useMovies(query) {
         [query]
     );
 
-    return { movies, isLoading, error };
+    return { movies,  isLoading, error };
 }
