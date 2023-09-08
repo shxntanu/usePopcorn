@@ -14,7 +14,6 @@ import WatchedMovieList from "../components/WatchedMovieList";
 
 import ErrorMessage from "../utils/ErrorMessage";
 import Numresults from "../utils/Numresults";
-import Main from "../layout/Main";
 
 export default function Home() {
     const [query, setQuery] = useState("");
@@ -46,7 +45,7 @@ export default function Home() {
                 <Search query={query} setQuery={setQuery} />
                 <Numresults movies={movies.results} />
             </NavBar>
-            <Main>
+            <div className="main">
                 <Box>
                     {isLoading && <Loader />}
                     {!isLoading && !error && (
@@ -77,7 +76,7 @@ export default function Home() {
                         )}
                     </>
                 </Box>
-            </Main>
+            </div>
         </>
     );
 }
