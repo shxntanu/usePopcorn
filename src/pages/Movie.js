@@ -115,26 +115,15 @@ function Movie() {
                                         id,
                                     }) => {
                                         return (
-                                            // <SuggestedMovie
-                                            //     title={title}
-                                            //     poster_path={poster_path}
-                                            //     release_date={release_date.slice(
-                                            //         0,
-                                            //         4
-                                            //     )}
-                                            //     key={id}
-                                            // />
-                                            <div className="shrink-0 max-w-fit">
-                                                <img
-                                                    className=" w-auto object-fill shadow-xl dark:shadow-gray-800"
-                                                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                                                    alt={`Poster of ${title}`}
-                                                />
-                                                <div>
-                                                    <span>{title}</span>
-                                                    <p>{release_date}</p>
-                                                </div>
-                                            </div>
+                                            <SuggestedMovie
+                                                title={title}
+                                                poster_path={poster_path}
+                                                release_date={release_date.slice(
+                                                    0,
+                                                    4
+                                                )}
+                                                key={id}
+                                            />
                                         );
                                     }
                                 )}
