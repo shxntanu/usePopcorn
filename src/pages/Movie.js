@@ -17,7 +17,6 @@ function Movie() {
     const [isLoading, setIsLoading] = useState(true);
 
     const location = useLocation();
-
     const { selectedID } = location.state;
 
     const API_KEY = "d1b83dd054786999cdeab1df570feb46";
@@ -106,7 +105,7 @@ function Movie() {
                         </div>
                         <div className="items-center mt-20 mx-20">
                             <p className="logo body text-5xl">Similar Movies</p>
-                            <div className="py-10 flex flex-row flex-nowrap overflow-scroll">
+                            <div className="py-10 flex flex-row overflow-scroll">
                                 {similarMovies.results.map(
                                     ({
                                         title,
@@ -118,16 +117,13 @@ function Movie() {
                                             <SuggestedMovie
                                                 title={title}
                                                 poster_path={poster_path}
-                                                release_date={release_date.slice(
-                                                    0,
-                                                    4
-                                                )}
+                                                release_date={release_date.slice(0,4)}
+                                                selectedID={id}
                                                 key={id}
                                             />
                                         );
                                     }
                                 )}
-                                {/* <SuggestedMovie title="Inception" poster_path="/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" release_date="2014-09-44" /> */}
                             </div>
                         </div>
                     </div>
