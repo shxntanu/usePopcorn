@@ -17,7 +17,7 @@ export default function MovieDetails({
     const navigate = useNavigate();
 
     const toMoviePage = () => {
-        navigate("/movie", {
+        navigate(`/movie/${selectedID}`, {
             state: {
                 selectedID: selectedID,
             },
