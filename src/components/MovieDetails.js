@@ -42,7 +42,6 @@ export default function MovieDetails({
 
     const {
         title,
-        id,
         poster_path,
         vote_average,
         release_date,
