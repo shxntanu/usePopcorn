@@ -106,23 +106,39 @@ function Movie() {
                         </div>
                         <div className="items-center mt-20 mx-20">
                             <p className="logo body text-5xl">Similar Movies</p>
-                            <div className="flex h-2/5 flex-row flex-shrink-0 space-x-10 overflow-scroll">
-                                {/* {similarMovies.results.map(
-                                    ({ title, poster_path, release_date, id }) => {
+                            <div className="py-10 flex flex-row flex-nowrap overflow-scroll">
+                                {similarMovies.results.map(
+                                    ({
+                                        title,
+                                        poster_path,
+                                        release_date,
+                                        id,
+                                    }) => {
                                         return (
-                                            <SuggestedMovie
-                                                title={title}
-                                                poster_path={poster_path}
-                                                release_date={release_date.slice(
-                                                    0,
-                                                    4
-                                                )}
-                                                key={id}
-                                            />
+                                            // <SuggestedMovie
+                                            //     title={title}
+                                            //     poster_path={poster_path}
+                                            //     release_date={release_date.slice(
+                                            //         0,
+                                            //         4
+                                            //     )}
+                                            //     key={id}
+                                            // />
+                                            <div className="shrink-0 max-w-fit">
+                                                <img
+                                                    className=" w-auto object-fill shadow-xl dark:shadow-gray-800"
+                                                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                                                    alt={`Poster of ${title}`}
+                                                />
+                                                <div>
+                                                    <span>{title}</span>
+                                                    <p>{release_date}</p>
+                                                </div>
+                                            </div>
                                         );
                                     }
-                                )} */}
-                                <SuggestedMovie title="Inception" poster_path="/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" release_date="2014-09-44" />
+                                )}
+                                {/* <SuggestedMovie title="Inception" poster_path="/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" release_date="2014-09-44" /> */}
                             </div>
                         </div>
                     </div>
