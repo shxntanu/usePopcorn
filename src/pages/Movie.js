@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import NavBar from "../components/NavBar";
 import Search from "../components/Search";
 import Badge from "../components/Badge";
-import Numresults from "../utils/Numresults";
+// import Numresults from "../utils/Numresults";
 import SuggestedMovie from "../components/SuggestedMovie";
 import Loader from "../components/Loader";
 
